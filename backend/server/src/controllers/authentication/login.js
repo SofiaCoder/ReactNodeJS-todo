@@ -21,7 +21,7 @@ exports.login = function login(req, res) {
 
     pool.execute('SELECT password, id FROM USERS where username=?', [username], (error, result) => {
         if (error) {
-            res.status(500).send('Could not find ')
+            res.status(500).send(error.sqlMessage)
         } else if (result.length === 0) {
             res.status(500).send('Wrong username')
         } else {
@@ -41,7 +41,7 @@ exports.login = function login(req, res) {
                     maxAge: 60 * 60 * 1000,
                     httpOnly: true,
                     sameSite: 'none',
-                    // secure: true
+                    secure: true
                 })
                 
                 res.status(200).send('Success loggin in')
