@@ -1,11 +1,12 @@
-import RegisterForm from "../components/register/RegisterForm"
+
 import { Link } from "react-router-dom"
+import RegisterForm from "../components/register/RegisterForm"
 
 const RegisterPage = () => {
     
     return(
         <div>
-            <RegisterForm headline='Register' btnName='Register'/>
+            <RegisterForm/>
             <Link to='/'>Log in</Link>
         </div>
     )

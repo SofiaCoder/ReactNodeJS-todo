@@ -1,7 +1,11 @@
+import HandlingTodos from "../components/todos/HandlingTodos"
+import "./scss/TodoPage.scss"
+
 const TodoPage = () => {
     return(
-        <div>
-            <h1>Your todos</h1>
+        <div className="todoPage">
+            <h1>Your Todos</h1>
+            <HandlingTodos />
         </div>
     )
 }
