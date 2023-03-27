@@ -1,0 +1,17 @@
+const patchTodo = async (todoTask, todoText) => {
+    const task = todoTask
+    const text = todoText
+        
+    const res = await fetch('http://localhost:5050/todo', {
+        method: 'PATCH',
+        credentials: 'include',
+        body: JSON.stringify({task, text}),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+    const data = await res.text()
+    console.log(data)
+}
+    
+export default patchTodo

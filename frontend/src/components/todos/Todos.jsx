@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import "./handlingTodos.scss"
+import "./scss/handlingTodos.scss"
 import handlingCheckbox from "./functions/handlingCheckbox"
+import deleteTodo from "./functions/deleteTodo"
 
 const HandlingTodos = () => {
     const [todos, setTodos] = useState()
@@ -26,15 +27,27 @@ const HandlingTodos = () => {
         await handlingCheckbox(id, newValue)
         getTodos()
     }
+
+    const editHandler = (todoID) => {
+        
+    }
+
+    const deleteHandler = (todoID) => {
+        const id = todoID
+        deleteTodo(id)
+        getTodos() 
+    } 
         
     return(
         <div className="handlingTodos">
             {todos?.map((todo) => {
                 return (<div className="todoBox" key={todo.id}>
-                <h3>{todo.task}</h3>
-                <p>{todo.text}</p>
-                <p>{todo.id}</p>
-                <input type='checkbox' value={todo.value} checked={todo.value == '1' ? true : false} onChange={() => {checkboxHandler(todo)}}/>
+                    <h3>{todo.task}</h3>
+                    <p>{todo.text}</p>
+                    <p>{todo.id}</p>
+                    <input type='checkbox' value={todo.value} checked={todo.value == '1' ? true : false} onChange={() => {checkboxHandler(todo)}}/>
+                    <button className="editBtn">Edit</button>
+                    <button className="deleteBtn" onClick={() => {deleteHandler(todo.id)}}>❌</button>
                 </div>)
             })}
         </div>
