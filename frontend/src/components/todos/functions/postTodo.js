@@ -15,4 +15,4 @@ const postTodo = async (todoTask, todoText) => {
     console.log(data)
 }
 
-export default postTodo
+export {postTodo}

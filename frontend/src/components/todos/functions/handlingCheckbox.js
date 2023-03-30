@@ -1,7 +1,6 @@
 const handlingCheckbox = async (id, newValue) => {
     const todoID = id
     const checkValue = newValue
-    
 
     const res = await fetch('http://localhost:5050/todo/value', {
         method: 'PATCH',
