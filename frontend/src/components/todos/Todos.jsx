@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import "./scss/handlingTodos.scss"
 import handlingCheckbox from "./functions/handlingCheckbox"
 import deleteTodo from "./functions/deleteTodo"
 
+
 const HandlingTodos = () => {
     const [todos, setTodos] = useState()
+    const [visibility, setVisibility] = useState("hidden")
 
     const getTodos = async () => {
         const res = await fetch('http://localhost:5050/todo', {
@@ -29,6 +32,8 @@ const HandlingTodos = () => {
     }
 
     const editHandler = (todoID) => {
+        // visibility === "hidden" ? setVisibility("visible") : setVisibility("hidden")
+        // const id = todoID
         
     }
 
@@ -37,6 +42,7 @@ const HandlingTodos = () => {
         deleteTodo(id)
         getTodos() 
     } 
+    
         
     return(
         <div className="handlingTodos">
@@ -46,7 +52,7 @@ const HandlingTodos = () => {
                     <p>{todo.text}</p>
                     <p>{todo.id}</p>
                     <input type='checkbox' value={todo.value} checked={todo.value == '1' ? true : false} onChange={() => {checkboxHandler(todo)}}/>
-                    <button className="editBtn">Edit</button>
+                    <Link className="editLink" to={`/Todos/${todo.id}`} state={todo} >Edit</Link>
                     <button className="deleteBtn" onClick={() => {deleteHandler(todo.id)}}>❌</button>
                 </div>)
             })}
