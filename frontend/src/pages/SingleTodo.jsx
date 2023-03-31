@@ -32,20 +32,26 @@ const SingleTodo = () => {
             getSingleTodo()
     },[id])
 
-    // const timeFunction = () => {
-    //     setTimeout(() => {
-    //         navigate('/TodoPage')
-    //     }, 2000)
-    // }
+    const patchHandler = (e) => {
+        e.preventDefault()
+        patchTodo(todoTitle, todoBody, id)
+        timeFunction()
+    }
+
+    const timeFunction = () => {
+        setTimeout(() => {
+            navigate('/TodoPage')
+        }, 3000)
+    }
 
     return (
         <div className="todoForm">
-            <form>
+            <form onSubmit={patchHandler}>
                 <label htmlFor="task">Task: </label>
                 <input type="text" value={todoTitle} id="task" onChange={(e) => setTodoTitle(e.target.value)} />
                 <label htmlFor="todoText">Text: </label>
                 <textarea value={todoBody} id="todoText" onChange={(e) => setTodoBody(e.target.value)} />
-                <button type="submit" id="todoBtn" onClick={() => patchTodo({todoTitle, todoBody, id})}>Save</button>
+                <input type="submit" id="todoBtn" value="Save"/>
             </form>
         </div>
     )
@@ -55,7 +61,7 @@ export {SingleTodo}
 
 
 
-//
+//() => patchTodo({todoTitle, todoBody, id})
 
   // return(
     //     <TodoForm taskProp={task} todoTextProp={todoText} formFunction={timeFunction} submitFunction={patchTodo} btnText="Save" />
