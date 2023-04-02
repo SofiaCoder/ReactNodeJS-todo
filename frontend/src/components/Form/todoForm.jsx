@@ -1,24 +1,42 @@
 import { useState, useEffect } from "react";
 
-const TodoForm = ({taskProp, todoTextProp, formFunction, submitFunction, btnText}) => {
+const TodoForm = ({title, body, submitFunction, btnText}) => {
+    const [todoTitle, setTodoTitle] = useState('')
+    const [todoBody, setTodoBody] = useState('')
+    
 
-    const [task, setTask] = useState('')
-    const [todoText, setTodoText] = useState('')
+    useEffect(() => {
+        const startSetHandler = () => {
+            if (title && body) {
+            setTodoTitle(title)
+            setTodoBody(body)
+            }
+        } 
+        startSetHandler()
+    }, [])
 
+    const submitHandler = (e) => {
+        e.preventDefault()
+        submitFunction(todoTitle, todoBody)
+        setTodoTitle('')
+        setTodoBody('')
+    }
 
-    // useEffect(() => {
-    //     setTask(taskProp)
-    //     setTodoText(todoTextProp)
-    // },[])
+    const timeFunction = () => {
+        setTimeout(() => {
+            
+        }, 3000)
+    }
+
 
     return(
         <div className="todoForm">
-            <form onSubmit={formFunction}>
-                <label htmlFor="task">Task: </label>
-                <input type="text" value={task} id="task" onChange={(e) => setTask(e.target.value)} />
-                <label htmlFor="todoText">Text: </label>
-                <input type="text" value={todoText} id="todoText" onChange={(e) => setTodoText(e.target.value)} />
-                <button type="submit" id="todoBtn" onClick={() => submitFunction(task, todoText)}>{btnText}</button>
+            <form onSubmit={submitHandler}>
+                <label htmlFor="task">Todo: </label>
+                <input type="text" value={todoTitle} id="task" onChange={(e) => setTodoTitle(e.target.value)} />
+                <label htmlFor="todoText">Description: </label>
+                <input type="text" value={todoBody} id="todoText" onChange={(e) => setTodoBody(e.target.value)} />
+                <button type="submit" id="todoBtn">{btnText}</button>
             </form>
         </div>
     )

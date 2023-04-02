@@ -7,7 +7,6 @@ import deleteTodo from "./functions/deleteTodo"
 
 const HandlingTodos = () => {
     const [todos, setTodos] = useState()
-    const [visibility, setVisibility] = useState("hidden")
 
     const getTodos = async () => {
         const res = await fetch('http://localhost:5050/todo', {
@@ -29,12 +28,6 @@ const HandlingTodos = () => {
 
         await handlingCheckbox(id, newValue)
         getTodos()
-    }
-
-    const editHandler = (todoID) => {
-        // visibility === "hidden" ? setVisibility("visible") : setVisibility("hidden")
-        // const id = todoID
-        
     }
 
     const deleteHandler = (todoID) => {
