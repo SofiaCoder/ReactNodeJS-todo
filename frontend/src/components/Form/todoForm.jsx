@@ -15,11 +15,10 @@ const TodoForm = ({title, body, submitFunction, btnText}) => {
         startSetHandler()
     }, [])
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
-        submitFunction(todoTitle, todoBody)
-        setTodoTitle('')
-        setTodoBody('')
+        await submitFunction(todoTitle, todoBody)
+        
     }
 
     const timeFunction = () => {

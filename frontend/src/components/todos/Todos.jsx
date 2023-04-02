@@ -3,21 +3,18 @@ import { Link } from "react-router-dom"
 import "./scss/handlingTodos.scss"
 import handlingCheckbox from "./functions/handlingCheckbox"
 import deleteTodo from "./functions/deleteTodo"
+import { getTodos } from "./functions/getTodos"
 
 
 const HandlingTodos = () => {
     const [todos, setTodos] = useState()
 
-    const getTodos = async () => {
-        const res = await fetch('http://localhost:5050/todo', {
-            credentials: "include"
-        })
-        const data = await res.json()
-        setTodos(data)
-    }
-
     useEffect(() => {
-        getTodos()
+        const fetchTodos = async () => {
+        const data = await getTodos()
+        setTodos(data)
+        }
+        fetchTodos()
      },[])
     
     const checkboxHandler = async (todo) => {
@@ -30,10 +27,10 @@ const HandlingTodos = () => {
         getTodos()
     }
 
-    const deleteHandler = (todoID) => {
+    const deleteHandler = async (todoID) => {
         const id = todoID
-        deleteTodo(id)
-        getTodos() 
+        await deleteTodo(id)
+        await getTodos() 
     } 
     
         
@@ -54,4 +51,5 @@ const HandlingTodos = () => {
 }
 
 export default HandlingTodos
+
 
