@@ -1,7 +1,6 @@
 const deleteTodo = async (id) => {
     const todoID = id
     
-
     const res = await fetch('http://localhost:5050/todo', {
         method: 'DELETE',
         credentials: 'include',
@@ -12,6 +11,7 @@ const deleteTodo = async (id) => {
     })
     const data = await res.text()
     console.log(data)
+    return data
 }
 
 export default deleteTodo
