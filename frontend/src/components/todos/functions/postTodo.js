@@ -12,7 +12,7 @@ const postTodo = async (todoTask, todoText) => {
         }
     })
     const data = await res.text()
-    console.log(data)
+    return data
 }
 
 export {postTodo}
