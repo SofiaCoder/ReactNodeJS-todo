@@ -6,7 +6,6 @@ const LandingPage = () => {
     return(
         <div>
             <LoginForm/>
-            <Link to='/RegisterPage'>Register</Link>
         </div>
     )
 }
