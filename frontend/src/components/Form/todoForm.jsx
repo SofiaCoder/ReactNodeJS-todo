@@ -1,16 +1,11 @@
 import { useState, useEffect } from "react";
-import { getTodos } from "../todos/functions/getTodos";
+import './scss/todoForm.scss'
 
 const TodoForm = ({title, body, submitFunction, btnText}) => {
     const [todoTitle, setTodoTitle] = useState('')
     const [todoBody, setTodoBody] = useState('')
     const [respons, setRespons] = useState()
 
-    const fetchTodos = () => {
-        getTodos()
-    }
-    
-    
 
     useEffect(() => {
         const startSetHandler = () => {
@@ -41,7 +36,7 @@ const TodoForm = ({title, body, submitFunction, btnText}) => {
                     <label htmlFor="task">Todo: </label>
                     <input type="text" value={todoTitle} id="task" onChange={(e) => setTodoTitle(e.target.value)} />
                     <label htmlFor="todoText">Description: </label>
-                    <input type="text" value={todoBody} id="todoText" onChange={(e) => setTodoBody(e.target.value)} />
+                    <textarea value={todoBody} id="todoText" onChange={(e) => setTodoBody(e.target.value)} />
                     <button type="submit" id="todoBtn">{btnText}</button>
                 </form>
             </div>
