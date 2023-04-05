@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
+import { AuthForm } from "../Form/AuthForm";
 
 const RegisterForm = () => {
 
@@ -27,18 +28,23 @@ const RegisterForm = () => {
         Register()
     }
 
+    const usernameSetter = (e) => setUsername(e.target.value)
+    const passwordSetter = (e) => setPassword(e.target.value)
+
     return (
-        <div>
+        <>
             <h1>Register</h1>
-            <form>
-                <label htmlFor="username">Username: </label>
-                <input type="text" value={username} id="username" onChange={(e) => setUsername(e.target.value)} placeholder="Username"/>
-                <label htmlFor="password">Password: </label>
-                <input type="password" value={password} id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
-                <button type="submit" id="loginRegisterBtn" onClick={Submit}>Register</button>
-            </form>
+            <AuthForm 
+                username={username}
+                usernameSet={usernameSetter}
+                password={password}
+                passwordSet={passwordSetter}
+                submitFunction={Submit}
+                btnText="Register"                
+            />
+            <Link to='/'>Log in</Link>
             <h2>{respons}</h2>
-        </div>)
+        </>)
 }
 
 export default RegisterForm

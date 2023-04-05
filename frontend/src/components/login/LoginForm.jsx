@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { Link } from 'react-router-dom';
+import { AuthForm } from "../Form/AuthForm";
 
 const LoginForm = () => {
 
@@ -19,6 +20,7 @@ const LoginForm = () => {
         const data = await res.text()
         setRespons(data)
         if(res.status === 200) {
+            localStorage.setItem('username', username)
             window.location.href='/TodoPage'
         }
     }
@@ -28,18 +30,22 @@ const LoginForm = () => {
         Login()
     }
 
-    return (
-        <div>
-            <h1>Login</h1>
-            <form>
-                <label htmlFor="username">Username: </label>
-                <input type="text" value={username} id="username" onChange={(e) => setUsername(e.target.value)} placeholder="Username"/>
-                <label htmlFor="password">Password: </label>
-                <input type="password" value={password} id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
-                <button type="submit" id="loginRegisterBtn" onClick={Submit}>Log in</button>
-            </form>
-            <h2>{respons}</h2>
-        </div>)
-}
+    const usernameSetter = (e) => setUsername(e.target.value)
+    const passwordSetter = (e) => setPassword(e.target.value)
 
+    return (
+        <>
+            <h1>Login</h1>
+            <AuthForm 
+                username={username}
+                usernameSet={usernameSetter}
+                password={password}
+                passwordSet={passwordSetter}
+                submitFunction={Submit}
+                btnText="Log in"
+            />
+            <Link to='/RegisterPage'>Register</Link>
+            <h2>{respons}</h2>
+        </>)
+}
 export default LoginForm
