@@ -1,4 +1,4 @@
-import { TodoForm } from "../components/Form/todoForm";
+import { TodoForm } from "../components/Form/TodoForm";
 import patchTodo from "../components/todos/functions/patchTodo";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -58,11 +58,3 @@ const SingleTodo = () => {
 }
 
 export {SingleTodo}
-
-
-
-
-
-  // return(
-    //     <TodoForm taskProp={task} todoTextProp={todoText} formFunction={timeFunction} submitFunction={patchTodo} btnText="Save" />
-    // )
