@@ -15,7 +15,7 @@ exports.getFriendsTodos = function getFriendsTodos(req, res) {
 
     const { friendID } = value
 
-    const query = 'SELECT task, text FROM todos WHERE userID=?'
+    const query = 'SELECT id, task, text FROM todos WHERE userID=?'
 
     pool.execute(query, [friendID], (error, result) => {
         if(error){
