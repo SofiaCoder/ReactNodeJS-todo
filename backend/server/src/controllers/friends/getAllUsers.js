@@ -1,7 +1,7 @@
 const pool = require("../../functions/mysqlPool")
 
 exports.getAllUsers = function getAllUsers(req, res) {
-    const query = 'SELECT username FROM users'
+    const query = 'SELECT id, username FROM users'
     pool.execute(query, (error, result) => {
         if(error) {
             res.status(500).send(error.sqlMessage)
