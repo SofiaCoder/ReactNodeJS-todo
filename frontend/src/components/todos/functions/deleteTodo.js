@@ -10,7 +10,6 @@ const deleteTodo = async (id) => {
         }
     })
     const data = await res.text()
-    console.log(data)
     return data
 }
 
