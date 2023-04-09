@@ -1,0 +1,44 @@
+.todoPage {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-areas: 
+        "header friendPage"
+        "todoForm friendPage"
+        "todos friendPage"
+        "todos friendPage";
+
+    
+    h1 {
+        grid-area: header;
+    }
+    .todoForm {
+        grid-area: todoForm;
+    }
+    .todos {
+        grid-area: todos;
+    }
+    .friendPage {
+        grid-area: friendPage;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .todoPage {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+        "header friendPage"
+        "todoForm friendPage"
+        "todos friendPage"
+        "todos friendPage";
+    }
+  }
+  @media screen and (max-width: 512px) {
+    .todoPage {
+        grid-template-areas: 
+            "header"
+            "todoForm"
+            "todos"
+            "todos"
+            "friendPage";
+    }
+  } 
